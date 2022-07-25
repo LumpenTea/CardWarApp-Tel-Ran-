@@ -1,0 +1,22 @@
+.display{
+    width: 55vw;
+    text-align: center;
+    border: 1px solid black;
+    border-radius: 15px;
+}
+
+.cards{
+    display: grid;
+    justify-content: center;
+    align-items: center;
+}
+
+.card{
+    width: 8vw;
+    height: 20vh;
+    text-align: center;
+    border: 1px solid black;
+    border-radius: 15px;
+    font-size: 2em;
+    padding: 35% 0;
+}
