@@ -47,7 +47,7 @@ class Game extends React.Component {
                 <h3>{this.props.result.player}</h3>
                 <h1 className='mb-4'>{this.props.username}</h1>
                 <div className={style.nextButton}>
-                    <button onClick={() => this.setButtonDirection()} className='btn btn-danger mb-4'>Next</button>
+                    <button onClick={() => this.setButtonDirection()} className='btn btn-dark mb-4'>Next</button>
                 </div>
             </div>
         )

@@ -22,7 +22,7 @@ const Finish = ({ pageChange, result, resultZero }) => {
                 pageChange('game');
                 resultZero();
                 cardsDeal();
-            }} className='btn btn-danger mt-2 mb-4'>Again?</button>
+            }} className='btn btn-dark mt-2 mb-4'>Again?</button>
         </div>
     )
 }
