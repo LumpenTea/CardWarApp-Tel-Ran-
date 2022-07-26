@@ -4,7 +4,7 @@ export const cards = {
 }
 
 const numbers = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14];
-const suits = ['\u2661', '\u2662', '\u2664', '\u2667'];
+const suits = ['\u2661', '\u2662', '\u2664', '\u2667']; //decode: Heart, Diamond, Spade, Club 
 
 const createDeck = () => {
     const deck = [];

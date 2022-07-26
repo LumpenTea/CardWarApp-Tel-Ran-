@@ -1,6 +1,10 @@
 .grid{
     width: 55vw;
-    border: 1px solid black;
+    border: 2px solid #bf7545;
     border-radius: 15px;
     text-align: center;
+    background-image: url(https://wallpaperset.com/w/full/2/4/1/26107.jpg);
+    background-size: cover;
+    color: white;
+    text-shadow: 2px 2px black;
 }

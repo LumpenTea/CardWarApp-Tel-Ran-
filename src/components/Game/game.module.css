@@ -1,8 +1,12 @@
 .display{
     width: 55vw;
     text-align: center;
-    border: 1px solid black;
+    border: 2px solid #bf7545;
     border-radius: 15px;
+    background-image: url(https://wallpaperset.com/w/full/2/4/1/26107.jpg);
+    background-size: cover;
+    color: white;
+    text-shadow: 2px 2px black;
 }
 
 .cards{
@@ -14,8 +18,12 @@
 .card{
     width: 8vw;
     height: 20vh;
+    color: black;
+    background-image: url(https://media.istockphoto.com/photos/brown-striped-recycle-paper-background-picture-id994722926?k=20&m=994722926&s=612x612&w=0&h=YLF4QXfRHfmXZhWpHMBphSPQuse1PRK-LWDlSTm7Yh8=);
+    background-size: cover;
+    text-shadow: none;
     text-align: center;
-    border: 1px solid black;
+    border: 2px solid #a57e56;
     border-radius: 15px;
     font-size: 2em;
     padding: 35% 0;
