@@ -1,28 +1,23 @@
-import React from 'react'
+import React, { useState } from 'react'
 import style from './game.module.css'
 
-class Game extends React.Component {
+const Game = ({ pageChange, username, userWin, changeCard, game, deckLength, result }) => {
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            cardCounter: 1
-        }
-    }
+    const [counter, setCounter] = useState(1);
 
-    setButtonDirection = () => {
-        if (this.state.cardCounter >= this.props.deckLength) {
-            this.props.userWin(this.props.game.playerCard, this.props.game.computerCard);
-            this.props.pageChange('finish');
+    const setButtonDirection = () => {
+        if (counter >= deckLength) {
+            userWin(game.playerCard, game.computerCard);
+            pageChange('finish');
         } else {
-            this.props.changeCard(this.state.cardCounter);
-            this.setState({ cardCounter: this.state.cardCounter + 1 })
-            this.props.userWin(this.props.game.playerCard, this.props.game.computerCard);
+            changeCard(counter);
+            setCounter(prev => prev + 1);
+            userWin(game.playerCard, game.computerCard);
         }
     }
 
-    checkNumber = number => {
-        switch(number){
+    const checkNumber = number => {
+        switch (number) {
             case 11: return 'J';
             case 12: return 'Q';
             case 13: return 'K';
@@ -31,27 +26,26 @@ class Game extends React.Component {
         }
     }
 
-    render() {
-        const computerNumber = this.props.game.computerCard.number;
-        const playerNumber = this.props.game.playerCard.number;
-        const computerSuit = this.props.game.computerCard.suit;
-        const playerSuit = this.props.game.playerCard.suit;
-        return (
-            <div className={style.display} >
-                <h1 className='mt-4'>Computer</h1>
-                <h3>{this.props.result.computer}</h3>
-                <div className={style.cards}>
-                    <div className={style.card}>{computerSuit} {this.checkNumber(computerNumber)}</div>
-                    <div className={`${style.card} mt-4`}>{playerSuit} {this.checkNumber(playerNumber)}</div>
-                </div>
-                <h3>{this.props.result.player}</h3>
-                <h1 className='mb-4'>{this.props.username}</h1>
-                <div className={style.nextButton}>
-                    <button onClick={() => this.setButtonDirection()} className='btn btn-dark mb-4'>Next</button>
-                </div>
+    const computerNumber = game.computerCard.number;
+    const playerNumber = game.playerCard.number;
+    const computerSuit = game.computerCard.suit;
+    const playerSuit = game.playerCard.suit;
+
+    return (
+        <div className={style.display} >
+            <h1 className='mt-4'>Computer</h1>
+            <h3>{result.computer}</h3>
+            <div className={style.cards}>
+                <div className={style.card}>{computerSuit} {checkNumber(computerNumber)}</div>
+                <div className={`${style.card} mt-4`}>{playerSuit} {checkNumber(playerNumber)}</div>
             </div>
-        )
-    }
+            <h3>{result.player}</h3>
+            <h1 className='mb-4'>{username}</h1>
+            <div className={style.nextButton}>
+                <button onClick={() => setButtonDirection()} className='btn btn-dark mb-4'>Next</button>
+            </div>
+        </div>
+    )
 }
 
 export default Game
