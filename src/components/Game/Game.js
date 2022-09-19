@@ -1,20 +1,10 @@
-import React, { useState } from 'react'
+import React from 'react'
+import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { nextCard } from '../../units/reducers';
 import style from './game.module.css'
 
-const Game = ({ pageChange, username, userWin, changeCard, game, deckLength, result }) => {
-
-    const [counter, setCounter] = useState(1);
-
-    const setButtonDirection = () => {
-        if (counter >= deckLength) {
-            userWin(game.playerCard, game.computerCard);
-            pageChange('finish');
-        } else {
-            changeCard(counter);
-            setCounter(prev => prev + 1);
-            userWin(game.playerCard, game.computerCard);
-        }
-    }
+const Game = () => {
 
     const checkNumber = number => {
         switch (number) {
@@ -26,23 +16,24 @@ const Game = ({ pageChange, username, userWin, changeCard, game, deckLength, res
         }
     }
 
-    const computerNumber = game.computerCard.number;
-    const playerNumber = game.playerCard.number;
-    const computerSuit = game.computerCard.suit;
-    const playerSuit = game.playerCard.suit;
+    const { computerCard, playerCard, computerResult, playerResult, page } = useSelector(state => state.game);
+    const { user } = useSelector(state => state.meta);
+    const dispatch = useDispatch();
 
     return (
         <div className={style.display} >
             <h1 className='mt-4'>Computer</h1>
-            <h3>{result.computer}</h3>
+            <h3>{computerResult}</h3>
             <div className={style.cards}>
-                <div className={style.card}>{computerSuit} {checkNumber(computerNumber)}</div>
-                <div className={`${style.card} mt-4`}>{playerSuit} {checkNumber(playerNumber)}</div>
+                <div className={style.card}>{computerCard.suit} {checkNumber(computerCard.number)}</div>
+                <div className={`${style.card} mt-4`}>{playerCard.suit} {checkNumber(playerCard.number)}</div>
             </div>
-            <h3>{result.player}</h3>
-            <h1 className='mb-4'>{username}</h1>
+            <h3>{playerResult}</h3>
+            <h1 className='mb-4'>{user}</h1>
             <div className={style.nextButton}>
-                <button onClick={() => setButtonDirection()} className='btn btn-dark mb-4'>Next</button>
+                <Link to={page} replace >
+                    <button onClick={() => dispatch(nextCard())} className='btn btn-dark mb-4'>Next</button>
+                </Link>
             </div>
         </div>
     )
